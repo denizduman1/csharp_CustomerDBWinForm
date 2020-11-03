@@ -131,18 +131,26 @@ namespace WinFormUI
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if (dgwCustomer.CurrentRow != null)
+            try
             {
-                _customerService.Delete(
-              new Customer
-              {
-                ID = Convert.ToInt32(dgwCustomer.CurrentRow.Cells[0].Value),
-              }
-              );
+                if (dgwCustomer.CurrentRow != null)
+                {
+                    _customerService.Delete(
+                  new Customer
+                  {
+                      ID = Convert.ToInt32(dgwCustomer.CurrentRow.Cells[0].Value),
+                  }
+                  );
+                    MessageBox.Show("Customer Deleted");
+                    LoadCustomer();
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Hata.");
             }
 
-            MessageBox.Show("Customer Deleted");
-            LoadCustomer();
+            
         }
     }
 }
