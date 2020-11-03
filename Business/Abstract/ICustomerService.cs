@@ -13,5 +13,6 @@ namespace Business.Abstract
         void AddCustomer(Customer customer);
         void Updated(Customer customer);
         List<Customer> GetCustomerSearch(string text);
+        void Delete(Customer customer);
     }
 }

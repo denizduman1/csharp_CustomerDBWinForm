@@ -60,6 +60,7 @@
             this.tbxUpdGender = new System.Windows.Forms.TextBox();
             this.gbxSearch = new System.Windows.Forms.GroupBox();
             this.tbxSearchName = new System.Windows.Forms.TextBox();
+            this.btnRemove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwCustomer)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -363,12 +364,23 @@
             this.tbxSearchName.TabIndex = 0;
             this.tbxSearchName.TextChanged += new System.EventHandler(this.tbxSearchName_TextChanged);
             // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(1269, 409);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(83, 53);
+            this.btnRemove.TabIndex = 19;
+            this.btnRemove.Text = "Sil";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1461, 649);
+            this.ClientSize = new System.Drawing.Size(1391, 649);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.gbxSearch);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -420,6 +432,7 @@
         private System.Windows.Forms.TextBox tbxUpdGender;
         private System.Windows.Forms.GroupBox gbxSearch;
         private System.Windows.Forms.TextBox tbxSearchName;
+        private System.Windows.Forms.Button btnRemove;
     }
 }
 

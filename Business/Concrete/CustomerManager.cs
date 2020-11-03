@@ -36,5 +36,9 @@ namespace Business.Concrete
             return _customerdal.GetAll().Where(p => p.NAMESURNAME.ToLower().Contains(text.ToLower())).ToList();
         }
 
+        public void Delete(Customer customer)
+        {
+            _customerdal.Delete(customer);
+        }
     }
 }
