@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Business.Dependency.Ninject;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entity.Concrete;
@@ -20,8 +21,8 @@ namespace WinFormUI
         public Form1()
         {
             InitializeComponent();
-            _customerService = new CustomerManager(new EFCustomerDal());
-            _cityService = new CITY_DISTRICTManager(new EfCITY_DISTRICTDal());
+            _customerService = InstanceFactory.GetInstance<ICustomerService>();
+            _cityService = InstanceFactory.GetInstance<ICITY_DISTRICTService>();
         }
 
         ICustomerService _customerService;
@@ -47,17 +48,25 @@ namespace WinFormUI
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-            _customerService.AddCustomer(new Customer
+            try
             {
-                NAMESURNAME = tbxNameSurname.Text,
-                GENDER = tbxGender.Text,
-                BIRTHDATE = Convert.ToDateTime(tbxBirthdate.Text),
-                CITY = cbxCity.Text,
-                TELNR = tbxPhoneCode.Text,
-                TOWN = cbxTown.Text,
-            });
-            MessageBox.Show("CUSTOMER ADDED");
-            LoadCustomer();
+                _customerService.AddCustomer(new Customer
+                {
+                    NAMESURNAME = tbxNameSurname.Text,
+                    GENDER = tbxGender.Text,
+                    BIRTHDATE = Convert.ToDateTime(tbxBirthdate.Text),
+                    CITY = cbxCity.Text,
+                    TELNR = tbxPhoneCode.Text,
+                    TOWN = cbxTown.Text,
+                });
+                MessageBox.Show("CUSTOMER ADDED");
+                LoadCustomer();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
         }
 
         private void cbxCity_SelectedIndexChanged(object sender, EventArgs e)
@@ -150,7 +159,7 @@ namespace WinFormUI
                 MessageBox.Show("Hata.");
             }
 
-            
+
         }
     }
 }

@@ -1,6 +1,9 @@
 ﻿using Business.Abstract;
+using Business.Validate;
+using Business.ValidationRules.FluentValidation;
 using DataAccess.Abstract;
 using Entity.Concrete;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +26,9 @@ namespace Business.Concrete
 
         public void AddCustomer(Customer customer)
         {
+            //ValidationTool.Validate(new CustomerRules(),customer);
             _customerdal.Add(customer);
+
         }
 
         public void Updated(Customer customer)
